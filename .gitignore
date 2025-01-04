@@ -14,6 +14,7 @@ rag/chroma/
 # log
 *.log
 .env
+*.mp3
 
 # ---> VisualStudioCode
 .vscode/*

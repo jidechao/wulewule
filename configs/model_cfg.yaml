@@ -3,10 +3,12 @@
 defaults:
   - rag_cfg
   - _self_
+  - agent_cfg
 
 llm_default_dir:  ./models
 llm_model: ${llm_default_dir}/wulewule_v1_1_8b-w4a16-4bit  # wulewule model path, w4a16-4bit must turn on "use_lmdepoly"
 # llm_model: ${repo_root}/models/wulewule_v1_1_8b  # wulewule model path
+agent_mode: True
 use_lmdepoly: True
 use_rag: True  ## 是否开启rag
 stream_response: True # whether use streaming output

@@ -10,6 +10,7 @@
 
 
 
+
 <h3 align="center"> 悟了悟了</h3>
   <p align="center">
     <br />
@@ -17,6 +18,7 @@
     ·
     <a href="https://github.com/xzyun2011/wulewule/issues">报告Bug & 提出新特性</a>
   </p>
+
 
 
 
@@ -31,23 +33,31 @@
 1. 📊 基于RAG制作准确实时的新知识数据集
 2. 📚 RAG 检索增强生成回答
 3. 🚀 KV cache + Turbomind 推理加速
+4. 📲 基于[LlamaIndex](https://www.llamaindex.ai/) 的智能体（TTS、文生图）
 
 
 
-## 🎥 效果图
+## 🎥 微调模型效果图
 
 <video src="assets/wulewulev1_7b_4bit.mp4"></video>
 
 https://github.com/user-attachments/assets/9e01d57a-96a9-4ca6-855c-2128010cd0c7
 
+## 🌐 Agent在线体验
+
+Hugging Face的体验地址：https://huggingface.co/spaces/xzyun2011/wulewule
+
+Agent中模型都是调用[SiliconFlow](https://siliconflow.cn/)的api（非微调后的模型），仅供体验整体效果。
+
 ## 🗂️ 目录
+
 - [📜 前言](#-前言)
 - [🎥 图效果图](#-效果图)
+- [🌐 Agent在线体验](#-Agent在线体验)
 - [📊 框架图](#-框架图)
 - [🧩 Model Zoo](#-model-zoo)
 - [🚀 快速使用](#-快速使用)
   - [💻 本地部署](#-本地部署)
-  - [🌐 在线体验](#-在线体验)
 - [📖 详细指南](#-详细指南)
   - [🔍 数据集制作](#-数据集制作)
     - [📚 增量预训练数据](#-增量预训练数据)
@@ -56,6 +66,7 @@ https://github.com/user-attachments/assets/9e01d57a-96a9-4ca6-855c-2128010cd0c7
   - [🔄 模型训练](#-模型训练)
   - [🎨 模型量化](#-模型量化)
   - [🔎 RAG(检索增强生成)](#-rag检索增强生成)
+  - [📲 Agent(智能体)](#-agent智能体)
 - [📅 开发计划](#-开发计划)
   - [🌟 初版功能](#-初版功能)
   - [🤖 后续多模态版本](#-后续多模态版本)
@@ -94,12 +105,6 @@ pip install -r requirements.txt
 apt-get install git-lfs
 streamlit run app.py
 ```
-
-### 🌐 在线体验
-
-制作中...
-
-wulewule_InternLM2-Chat-1_8版体验地址：https://openxlab.org.cn/apps/detail/xzyun2011/wulewule_v1
 
 ## 📖 详细指南
 
@@ -199,6 +204,9 @@ python3 deploy/lmdeploy_model.py
 
 RAG代码讲解见[rag配置](rag/readme.md)。
 
+### 📲 Agent(智能体)
+
+修改`configs/agent_cfg.yaml`配置文件，默认使用SiliconFlow API的远端LLM、Embeddings模型。Agent中Rag工具是加载`data`目录下的txt数据构建知识库，另外还有文本转语音、文生图工具，这两者均调用SiliconFlow API实现。
 
 ## 📅 开发计划
 
@@ -212,13 +220,15 @@ RAG代码讲解见[rag配置](rag/readme.md)。
 
 - [ ] 增加history记忆，增加标准测试集，opencompass评估模型性能
 
-### 🤖 后续多模态版本
+### 🤖 多模态版本
 
-- [ ] 加入语音多模态，如ASR（用户语音输入）、TTS（猴哥语音回答问题）
+- [ ] 收集多模态的数据（文字、图片/视频的结构化数据）
 
-- [ ] 加入图像生成，接入别人的[SD+LoRA模型]( https://www.qpipi.com/73996/ )，判断用户意图生成对应prompt的天命人
+- [ ] 微调多模态模型，支持多模态的输入和输出，给到游戏攻略和指导
 
-- [ ] 加入音乐多模态，接类似[SUNO-AI](https://suno-ai.org/)，生成古典风格游戏配乐
+- [ ] 优化部署效果，提升用户体验
+
+- [ ] 优化代码框架，尝试拓展至其他游戏
 
 
 ## 🙏 致谢

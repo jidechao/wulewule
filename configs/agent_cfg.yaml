@@ -1,0 +1,14 @@
+# agent config
+repo_root: /root/wulewule
+data_source_dir: ${repo_root}/data  # txt data dir
+
+# local llm
+llm_model: ${repo_root}/models/wulewule_v1_7b  # wulewule model path
+agent_embeddings_model: /root/model/sentence-transformer   # agent used embeddings model
+
+# remote llm
+use_remote: True   ## use SiliconFlow api llm
+SiliconFlow_api: ""   ## SiliconFlow api key
+remote_llm: "Qwen/Qwen2.5-72B-Instruct"  # SiliconFlow llm
+remote_embeddings_model: "BAAI/bge-m3"   # SiliconFlow embeddings model
+
